@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Footer from '../../shared/Footer';
 import Header from '../../shared/Header';
-import style from './MainLayout.module.scss';
+import style from './PageLayout.module.scss';
 
 interface IMainLayout {
   children: React.ReactNode;
