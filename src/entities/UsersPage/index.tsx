@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { usersUrl } from '../../api/constats';
 import { IUsers } from '../../interfaces/IUsers';
+
 import UsersPageComponent from './components/UsersPageComponent';
 
 const UsersPage = () => {

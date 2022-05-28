@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { IUsers } from '../../../interfaces/IUsers';
+
 import style from '../UsersPage.module.scss';
 import UserCard from './UserCard';
 
