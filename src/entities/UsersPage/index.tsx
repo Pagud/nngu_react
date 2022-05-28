@@ -5,17 +5,19 @@ import UsersPageComponent from './components/UsersPageComponent';
 
 const UsersPage = () => {
   const [usersData, setUsersData] = useState<IUsers[] | null>(null);
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const getData = async (url: string) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    setUsersData(data);
+  };
 
   useEffect(() => {
     setTimeout(() => {
-      fetch(usersUrl)
-        .then((response) => response.json())
-        .then((data) => setUsersData(data));
+      getData(usersUrl);
     }, 1500);
   }, []);
 
-  // return <UsersPageComponent usersDataAttr={usersData} />;
   return !usersData ? <div>Загрузка...</div> : <UsersPageComponent usersDataAttr={usersData} />;
 };
 
