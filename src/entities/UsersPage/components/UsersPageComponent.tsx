@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useLocation } from 'react-router-dom';
 import { IUsers } from '../../../interfaces/IUsers';
 import Pagination from '../../../shared/Pagination';
 
@@ -10,12 +11,21 @@ interface IProps {
 }
 
 const UsersPageComponent: FC<IProps> = ({ usersDataAttr }) => {
+  const { search } = useLocation();
+
+  const currentPageNumber = new URLSearchParams(search).get('page');
+
+  const paginatedUserData = usersDataAttr.slice(
+    (Number(currentPageNumber) - 1) * 3,
+    Number(currentPageNumber) * 3
+  );
+
   return (
     <div>
       <p>Список пользователей:</p>
       <div className={style.user_list}>
-        {usersDataAttr.length ? (
-          usersDataAttr.map((user) => {
+        {paginatedUserData.length ? (
+          paginatedUserData.map((user) => {
             const { id, name, email } = user;
             return (
               <React.Fragment key={`UserId:${id}`}>

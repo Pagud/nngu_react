@@ -8,7 +8,7 @@ import UsersPageComponent from './components/UsersPageComponent';
 const UsersPage = () => {
   const [usersData, setUsersData] = useState<IUsers[] | null>(null);
 
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const navigate = useNavigate();
 
   const getData = async (url: string) => {
@@ -21,12 +21,13 @@ const UsersPage = () => {
     if (pathname === '/') {
       navigate('/users_page');
     }
-  }, [pathname, navigate]);
+    if (!search) {
+      navigate('?page=1');
+    }
+  }, [pathname, navigate, search]);
 
   useEffect(() => {
-    setTimeout(() => {
-      getData(usersUrl);
-    }, 1500);
+    getData(usersUrl);
   }, []);
 
   return !usersData ? <div>Загрузка...</div> : <UsersPageComponent usersDataAttr={usersData} />;
