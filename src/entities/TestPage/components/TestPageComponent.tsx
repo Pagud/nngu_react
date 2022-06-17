@@ -6,39 +6,39 @@ const TestPageComponent = () => {
 
   const updatedArray = useMemo(() => {
     return someArray.map((num) => {
-      console.log('Hello');
-      return num;
+      console.log('hello');
+      return num + 10;
     });
   }, [someArray]);
 
   // componentDidMount
   useEffect(() => {
-    console.log('компанент отображен');
+    console.log('Компонент отображен');
   }, []);
 
-  // // componentDidUpdate
-  // useEffect(() => {
-  //   console.log('компонент обновлён');
-  // });
+  // componentDidUpdate
+  //   useEffect(() => {
+  //     console.log('Компонент обновлен');
+  //   });
 
-  // useEffect(() => {
-  //   console.log('COUNTER обновлён');
-  // }, [counter]);
+  //   useEffect(() => {
+  //     console.log('COUNTER обновлен');
+  //   }, [counter]);
 
-  // useEffect(() => {
-  //   console.log('COUNTER обновлён');
-  // }, [someArray]);
+  //   useEffect(() => {
+  //     console.log('SOME_ARRAY обновлен');
+  //   }, [someArray]);
 
-  // useEffect(() => {
-  //   console.log('COUNTER или SOME_ARRAY обновлён');
-  // }, [counter, someArray]);
+  //   useEffect(() => {
+  //     console.log('COUNTER ИЛИ SOME_ARRAY обновлен');
+  //   }, [counter, someArray]);
 
-  // coponentWillUnmount
-  // useEffect(() => {
-  //   return () => {
-  //     console.log('Компонент был удалён');
-  //   };
-  // }, []);
+  // componentWillUnmount
+  useEffect(() => {
+    return () => {
+      console.log('Компонент был удален');
+    };
+  }, []);
 
   return (
     <div>
